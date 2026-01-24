@@ -1,0 +1,544 @@
+{
+  "rules": [
+    {
+      "id": "youtube-shorts",
+      "type": "path-contains",
+      "domain": "youtube.com",
+      "pathPattern": "/shorts",
+      "classification": "distracting"
+    },
+    {
+      "id": "youtube-watch",
+      "type": "path-contains",
+      "domain": "youtube.com",
+      "pathPattern": "/watch",
+      "classification": "neutral"
+    },
+    {
+      "id": "youtube-default",
+      "type": "domain",
+      "domain": "youtube.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "twitter",
+      "type": "domain",
+      "domain": "twitter.com",
+      "classification": "distracting"
+    },
+    {
+      "id": "x-com",
+      "type": "domain",
+      "domain": "x.com",
+      "classification": "distracting"
+    },
+    {
+      "id": "tiktok",
+      "type": "domain",
+      "domain": "tiktok.com",
+      "classification": "distracting"
+    },
+    {
+      "id": "instagram",
+      "type": "domain",
+      "domain": "instagram.com",
+      "classification": "distracting"
+    },
+    {
+      "id": "reddit",
+      "type": "domain",
+      "domain": "reddit.com",
+      "classification": "distracting"
+    },
+    {
+      "id": "facebook",
+      "type": "domain",
+      "domain": "facebook.com",
+      "classification": "distracting"
+    },
+    {
+      "id": "snapchat",
+      "type": "domain",
+      "domain": "snapchat.com",
+      "classification": "distracting"
+    },
+    {
+      "id": "pinterest",
+      "type": "domain",
+      "domain": "pinterest.com",
+      "classification": "distracting"
+    },
+    {
+      "id": "github",
+      "type": "domain",
+      "domain": "github.com",
+      "classification": "productive"
+    },
+    {
+      "id": "stackoverflow",
+      "type": "domain",
+      "domain": "stackoverflow.com",
+      "classification": "productive"
+    },
+    {
+      "id": "stackexchange",
+      "type": "domain",
+      "domain": "stackexchange.com",
+      "classification": "productive"
+    },
+    {
+      "id": "wikipedia",
+      "type": "domain",
+      "domain": "wikipedia.org",
+      "classification": "productive"
+    },
+    {
+      "id": "docs-google",
+      "type": "domain",
+      "domain": "docs.google.com",
+      "classification": "productive"
+    },
+    {
+      "id": "drive-google",
+      "type": "domain",
+      "domain": "drive.google.com",
+      "classification": "productive"
+    },
+    {
+      "id": "sheets-google",
+      "type": "domain",
+      "domain": "sheets.google.com",
+      "classification": "productive"
+    },
+    {
+      "id": "slides-google",
+      "type": "domain",
+      "domain": "slides.google.com",
+      "classification": "productive"
+    },
+    {
+      "id": "notion",
+      "type": "domain",
+      "domain": "notion.so",
+      "classification": "productive"
+    },
+    {
+      "id": "notion-www",
+      "type": "domain",
+      "domain": "www.notion.so",
+      "classification": "productive"
+    },
+    {
+      "id": "linear",
+      "type": "domain",
+      "domain": "linear.app",
+      "classification": "productive"
+    },
+    {
+      "id": "jira",
+      "type": "domain",
+      "domain": "atlassian.net",
+      "classification": "productive"
+    },
+    {
+      "id": "confluence",
+      "type": "domain",
+      "domain": "confluence.com",
+      "classification": "productive"
+    },
+    {
+      "id": "slack",
+      "type": "domain",
+      "domain": "slack.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "discord",
+      "type": "domain",
+      "domain": "discord.com",
+      "classification": "distracting"
+    },
+    {
+      "id": "discord-app",
+      "type": "domain",
+      "domain": "discordapp.com",
+      "classification": "distracting"
+    },
+    {
+      "id": "gmail",
+      "type": "domain",
+      "domain": "mail.google.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "outlook",
+      "type": "domain",
+      "domain": "outlook.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "outlook-office",
+      "type": "domain",
+      "domain": "outlook.office.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "office365",
+      "type": "domain",
+      "domain": "office.com",
+      "classification": "productive"
+    },
+    {
+      "id": "microsoft-teams",
+      "type": "domain",
+      "domain": "teams.microsoft.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "zoom",
+      "type": "domain",
+      "domain": "zoom.us",
+      "classification": "neutral"
+    },
+    {
+      "id": "netflix",
+      "type": "domain",
+      "domain": "netflix.com",
+      "classification": "distracting"
+    },
+    {
+      "id": "hulu",
+      "type": "domain",
+      "domain": "hulu.com",
+      "classification": "distracting"
+    },
+    {
+      "id": "disney-plus",
+      "type": "domain",
+      "domain": "disneyplus.com",
+      "classification": "distracting"
+    },
+    {
+      "id": "prime-video",
+      "type": "domain",
+      "domain": "primevideo.com",
+      "classification": "distracting"
+    },
+    {
+      "id": "twitch",
+      "type": "domain",
+      "domain": "twitch.tv",
+      "classification": "distracting"
+    },
+    {
+      "id": "linkedin",
+      "type": "domain",
+      "domain": "linkedin.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "medium",
+      "type": "domain",
+      "domain": "medium.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "quora",
+      "type": "domain",
+      "domain": "quora.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "news-ycombinator",
+      "type": "domain",
+      "domain": "news.ycombinator.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "arxiv",
+      "type": "domain",
+      "domain": "arxiv.org",
+      "classification": "productive"
+    },
+    {
+      "id": "coursera",
+      "type": "domain",
+      "domain": "coursera.org",
+      "classification": "productive"
+    },
+    {
+      "id": "edx",
+      "type": "domain",
+      "domain": "edx.org",
+      "classification": "productive"
+    },
+    {
+      "id": "khan-academy",
+      "type": "domain",
+      "domain": "khanacademy.org",
+      "classification": "productive"
+    },
+    {
+      "id": "udemy",
+      "type": "domain",
+      "domain": "udemy.com",
+      "classification": "productive"
+    },
+    {
+      "id": "udacity",
+      "type": "domain",
+      "domain": "udacity.com",
+      "classification": "productive"
+    },
+    {
+      "id": "codecademy",
+      "type": "domain",
+      "domain": "codecademy.com",
+      "classification": "productive"
+    },
+    {
+      "id": "freecodecamp",
+      "type": "domain",
+      "domain": "freecodecamp.org",
+      "classification": "productive"
+    },
+    {
+      "id": "mdn",
+      "type": "domain",
+      "domain": "developer.mozilla.org",
+      "classification": "productive"
+    },
+    {
+      "id": "w3schools",
+      "type": "domain",
+      "domain": "w3schools.com",
+      "classification": "productive"
+    },
+    {
+      "id": "dev-to",
+      "type": "domain",
+      "domain": "dev.to",
+      "classification": "productive"
+    },
+    {
+      "id": "reddit-productive",
+      "type": "path-contains",
+      "domain": "reddit.com",
+      "pathPattern": "/r/learnprogramming",
+      "classification": "productive"
+    },
+    {
+      "id": "reddit-productive-2",
+      "type": "path-contains",
+      "domain": "reddit.com",
+      "pathPattern": "/r/programming",
+      "classification": "productive"
+    },
+    {
+      "id": "youtube-educational",
+      "type": "path-contains",
+      "domain": "youtube.com",
+      "pathPattern": "/channel/UC",
+      "classification": "neutral"
+    },
+    {
+      "id": "amazon",
+      "type": "domain",
+      "domain": "amazon.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "ebay",
+      "type": "domain",
+      "domain": "ebay.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "etsy",
+      "type": "domain",
+      "domain": "etsy.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "shopify",
+      "type": "domain",
+      "domain": "shopify.com",
+      "classification": "productive"
+    },
+    {
+      "id": "stripe",
+      "type": "domain",
+      "domain": "stripe.com",
+      "classification": "productive"
+    },
+    {
+      "id": "aws",
+      "type": "domain",
+      "domain": "aws.amazon.com",
+      "classification": "productive"
+    },
+    {
+      "id": "azure",
+      "type": "domain",
+      "domain": "azure.microsoft.com",
+      "classification": "productive"
+    },
+    {
+      "id": "gcp",
+      "type": "domain",
+      "domain": "cloud.google.com",
+      "classification": "productive"
+    },
+    {
+      "id": "vercel",
+      "type": "domain",
+      "domain": "vercel.com",
+      "classification": "productive"
+    },
+    {
+      "id": "netlify",
+      "type": "domain",
+      "domain": "netlify.com",
+      "classification": "productive"
+    },
+    {
+      "id": "heroku",
+      "type": "domain",
+      "domain": "heroku.com",
+      "classification": "productive"
+    },
+    {
+      "id": "digitalocean",
+      "type": "domain",
+      "domain": "digitalocean.com",
+      "classification": "productive"
+    },
+    {
+      "id": "figma",
+      "type": "domain",
+      "domain": "figma.com",
+      "classification": "productive"
+    },
+    {
+      "id": "sketch",
+      "type": "domain",
+      "domain": "sketch.com",
+      "classification": "productive"
+    },
+    {
+      "id": "adobe",
+      "type": "domain",
+      "domain": "adobe.com",
+      "classification": "productive"
+    },
+    {
+      "id": "canva",
+      "type": "domain",
+      "domain": "canva.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "spotify",
+      "type": "domain",
+      "domain": "spotify.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "apple-music",
+      "type": "domain",
+      "domain": "music.apple.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "soundcloud",
+      "type": "domain",
+      "domain": "soundcloud.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "bandcamp",
+      "type": "domain",
+      "domain": "bandcamp.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "imdb",
+      "type": "domain",
+      "domain": "imdb.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "rottentomatoes",
+      "type": "domain",
+      "domain": "rottentomatoes.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "nytimes",
+      "type": "domain",
+      "domain": "nytimes.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "bbc",
+      "type": "domain",
+      "domain": "bbc.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "cnn",
+      "type": "domain",
+      "domain": "cnn.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "theguardian",
+      "type": "domain",
+      "domain": "theguardian.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "washingtonpost",
+      "type": "domain",
+      "domain": "washingtonpost.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "reuters",
+      "type": "domain",
+      "domain": "reuters.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "bloomberg",
+      "type": "domain",
+      "domain": "bloomberg.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "techcrunch",
+      "type": "domain",
+      "domain": "techcrunch.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "theverge",
+      "type": "domain",
+      "domain": "theverge.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "wired",
+      "type": "domain",
+      "domain": "wired.com",
+      "classification": "neutral"
+    },
+    {
+      "id": "arstechnica",
+      "type": "domain",
+      "domain": "arstechnica.com",
+      "classification": "neutral"
+    }
+  ],
+  "defaultClassification": "neutral"
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ZoneIn Options</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>ZoneIn Extension Settings</h1>
+    </header>
+    
+    <section class="section">
+      <h2>Monitoring</h2>
+      <div class="setting">
+        <label>
+          <input type="checkbox" id="monitoring-enabled">
+          <span>Enable monitoring</span>
+        </label>
+        <p class="help-text">When enabled, the extension will classify browsing activity</p>
+      </div>
+    </section>
+    
+    <section class="section">
+      <h2>Transport Mode</h2>
+      <div class="setting">
+        <label>
+          <input type="radio" name="transport" value="native" id="transport-native">
+          <span>Native Host (recommended)</span>
+        </label>
+        <p class="help-text">Uses Chrome native messaging to communicate with ZoneIn app</p>
+        <p class="help-text" style="color: #64748b; font-size: 12px; margin-top: 4px;">
+          ⚠️ If you see an error about "native messaging host not found", this is normal if the host isn't installed. 
+          The extension will still work - use HTTP mode instead, or install the native host (see DEPLOY.md).
+        </p>
+      </div>
+      <div class="setting">
+        <label>
+          <input type="radio" name="transport" value="http" id="transport-http">
+          <span>Local HTTP (ZoneIn app running)</span>
+        </label>
+        <p class="help-text">Sends events to http://127.0.0.1:17321/events</p>
+        <p class="help-text" style="color: #64748b; font-size: 12px; margin-top: 4px;">
+          Use this mode if native messaging isn't set up. Start the HTTP server: 
+          <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 11px;">node native-host/http-server-example.js</code>
+        </p>
+      </div>
+    </section>
+    
+    <section class="section">
+      <h2>Rules Management</h2>
+      <div class="rules-controls">
+        <button id="add-rule-btn" class="btn-primary">Add Rule</button>
+        <button id="import-rules-btn" class="btn-secondary">Import Rules</button>
+        <button id="export-rules-btn" class="btn-secondary">Export Rules</button>
+        <button id="reset-rules-btn" class="btn-danger">Reset to Default</button>
+      </div>
+      
+      <div id="rules-list" class="rules-list">
+        <div class="loading">Loading rules...</div>
+      </div>
+    </section>
+    
+    <div id="rule-editor-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modal-title">Add Rule</h3>
+          <button class="modal-close" id="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Rule Type</label>
+            <select id="rule-type">
+              <option value="domain">Domain (exact match)</option>
+              <option value="path-contains">Path Contains</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Domain</label>
+            <input type="text" id="rule-domain" placeholder="example.com">
+          </div>
+          <div class="form-group" id="path-pattern-group" style="display: none;">
+            <label>Path Pattern</label>
+            <input type="text" id="rule-path-pattern" placeholder="/shorts">
+          </div>
+          <div class="form-group">
+            <label>Classification</label>
+            <select id="rule-classification">
+              <option value="productive">Productive</option>
+              <option value="neutral">Neutral</option>
+              <option value="distracting">Distracting</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="save-rule-btn" class="btn-primary">Save</button>
+          <button id="cancel-rule-btn" class="btn-secondary">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="rules-engine.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
