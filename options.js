@@ -142,8 +142,9 @@ function renderRules() {
   
   container.innerHTML = rules.map(rule => {
     const typeLabel = rule.type === 'path-contains' ? 'Path' : 'Domain';
+    const ruleId = escapeHtml(rule.id);
     return `
-      <div class="rule-item">
+      <div class="rule-item" data-rule-id="${ruleId}">
         <div class="rule-item-info">
           <span class="rule-item-type">${typeLabel}</span>
           <div class="rule-item-domain">${escapeHtml(rule.domain)}</div>
@@ -152,13 +153,29 @@ function renderRules() {
         <div>
           <span class="rule-item-classification ${rule.classification}">${rule.classification}</span>
           <div class="rule-item-actions">
-            <button class="btn-icon" onclick="editRule('${rule.id}')" title="Edit">✏️</button>
-            <button class="btn-icon" onclick="deleteRule('${rule.id}')" title="Delete">🗑️</button>
+            <button class="btn-icon edit-rule-btn" data-rule-id="${ruleId}" title="Edit">✏️</button>
+            <button class="btn-icon delete-rule-btn" data-rule-id="${ruleId}" title="Delete">🗑️</button>
           </div>
         </div>
       </div>
     `;
   }).join('');
+  
+  // Attach event listeners to edit buttons
+  container.querySelectorAll('.edit-rule-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const ruleId = e.target.closest('.edit-rule-btn').getAttribute('data-rule-id');
+      editRule(ruleId);
+    });
+  });
+  
+  // Attach event listeners to delete buttons
+  container.querySelectorAll('.delete-rule-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      const ruleId = e.target.closest('.delete-rule-btn').getAttribute('data-rule-id');
+      await deleteRule(ruleId);
+    });
+  });
 }
 
 /**
@@ -241,22 +258,22 @@ async function saveRule() {
 }
 
 /**
- * Edit rule (global function for onclick)
+ * Edit rule
  */
-window.editRule = function(ruleId) {
+function editRule(ruleId) {
   openRuleEditor(ruleId);
-};
+}
 
 /**
- * Delete rule (global function for onclick)
+ * Delete rule
  */
-window.deleteRule = async function(ruleId) {
+async function deleteRule(ruleId) {
   if (confirm('Are you sure you want to delete this rule?')) {
     rulesEngine.deleteRule(ruleId);
     await saveRules();
     await loadRules();
   }
-};
+}
 
 /**
  * Escape HTML
