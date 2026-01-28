@@ -35,11 +35,13 @@ If you have the ZoneIn desktop application installed, the extension can communic
 
 ### HTTP Transport
 
-The extension can optionally send classification events to a local HTTP server (typically the ZoneIn desktop app running on `127.0.0.1:17321`). This:
+The extension sends classification events to the ZoneIn macOS application running on your local machine via `http://127.0.0.1:17321/events`. This:
 
-- Only works if you have a local server running
-- All communication stays on your local machine
-- Can be disabled in the extension settings
+- Sends URL classification data to your local macOS app
+- The macOS app may use AI to process and analyze your browsing patterns
+- All communication stays on your local machine (localhost)
+- The extension works independently even if the macOS app is not running
+- All AI processing happens on your local machine - no data is sent to external servers
 
 ## Permissions Explained
 
@@ -47,8 +49,7 @@ The extension requests the following permissions:
 
 - **`tabs`**: To monitor your browsing activity and classify websites
 - **`storage`**: To save your preferences and custom rules locally
-- **`nativeMessaging`**: To communicate with the ZoneIn desktop app (if installed)
-- **`host_permissions`**: To send events to a local HTTP server (optional)
+- **`host_permissions`**: To send classification events to the ZoneIn macOS app running on localhost (127.0.0.1:17321)
 
 All permissions are used only for the stated purposes and no data leaves your device.
 

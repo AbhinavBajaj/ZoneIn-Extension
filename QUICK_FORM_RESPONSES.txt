@@ -1,0 +1,68 @@
+================================================================================
+CHROME WEB STORE PRIVACY & PERMISSIONS FORM - QUICK REFERENCE
+================================================================================
+
+1. SINGLE PURPOSE DESCRIPTION
+--------------------------------------------------------------------------------
+ZoneIn Extension helps users understand their browsing habits by automatically classifying websites as productive, neutral, or distracting. The extension monitors URLs you visit and applies local classification rules to categorize each site. All processing happens entirely on your device - no data is sent to external servers. Users can customize classification rules to match their personal productivity preferences. The extension optionally integrates with the ZoneIn desktop application for users who want to track their focus time across devices, but this integration is completely optional and all communication stays on the local machine.
+
+================================================================================
+
+2. PERMISSION JUSTIFICATIONS
+--------------------------------------------------------------------------------
+
+TABS JUSTIFICATION:
+The tabs permission is required to monitor browsing activity and classify websites. The extension listens for tab URL changes and active tab switches to detect when users navigate to different websites. This is essential for the extension's core functionality: classifying browsing activity. The extension only accesses tab URLs and titles - it does not access page content, cookies, or any other tab data. All classification happens locally using static rules, and no tab information is transmitted to external servers.
+
+STORAGE JUSTIFICATION:
+The storage permission is used to save user preferences and custom classification rules locally in the browser. This includes: monitoring on/off toggle, transport mode selection (native messaging vs HTTP), user-created custom rules for classifying websites, and event history for display in the popup. All data is stored locally using Chrome's storage.local API and never leaves the user's device. This permission is essential for persisting user settings and custom rules across browser sessions.
+
+NATIVE MESSAGING JUSTIFICATION:
+The nativeMessaging permission enables optional communication with the ZoneIn desktop application for users who have it installed. This allows the extension to send browsing classification events to the desktop app, enabling users to track their focus time across devices. This is completely optional - the extension works fully without it. All communication happens locally on the user's machine between the extension and a locally-installed native messaging host. No data is sent to external servers. Users can disable this feature and use HTTP transport mode instead, or disable transport entirely.
+
+HOST PERMISSION JUSTIFICATION (http://127.0.0.1:17321/*):
+The host permission for http://127.0.0.1:17321/* is used as an optional fallback transport method to send browsing classification events to a local HTTP server, typically the ZoneIn desktop application running on the user's machine. This is an alternative to native messaging and is completely optional. The extension only communicates with localhost (127.0.0.1) on the user's own machine - no external network requests are made. This permission is only used if the user explicitly enables HTTP transport mode in the extension settings. If the local server is not running, the extension continues to function normally without errors.
+
+================================================================================
+
+3. REMOTE CODE
+--------------------------------------------------------------------------------
+Select: "No, I am not using Remote code"
+
+Justification (if asked):
+All JavaScript code is included in the extension package. The extension uses only local script files (background.js, popup.js, options.js, rules-engine.js, transport.js) that are bundled with the extension. There are no external script references, no eval() calls, no Function() constructors, and no dynamic code loading from remote sources. All code is static and included in the extension ZIP package.
+
+================================================================================
+
+4. DATA USAGE
+--------------------------------------------------------------------------------
+
+What user data do you plan to collect?
+✅ CHECK ONLY: "Web history" 
+   (The list of web pages a user has visited, as well as associated data such as page title and time of visit)
+
+❌ DO NOT CHECK:
+   - Personally identifiable information
+   - Health information
+   - Financial and payment information
+   - Authentication information
+   - Personal communications
+   - Location
+   - User activity
+   - Website content
+
+Certifications (CHECK ALL THREE):
+✅ I do not sell or transfer user data to third parties, outside of the approved use cases
+✅ I do not use or transfer user data for purposes that are unrelated to my item's single purpose
+✅ I do not use or transfer user data to determine creditworthiness or for lending purposes
+
+================================================================================
+
+5. PRIVACY POLICY URL
+--------------------------------------------------------------------------------
+https://raw.githubusercontent.com/AbhinavBajaj/ZoneIn-Extension/master/PRIVACY.md
+
+OR (if hosted on zonein.io):
+https://zonein.io/privacy-policy
+
+================================================================================
