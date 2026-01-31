@@ -28,6 +28,10 @@ let eventHistory = [];
   chrome.tabs.onUpdated.addListener(handleTabUpdate);
   chrome.tabs.onActivated.addListener(handleTabActivated);
   
+  // When user switches back to Chrome from another app (e.g. Xcode), send current tab event
+  // so the current website is recorded without requiring a refresh
+  chrome.windows.onFocusChanged.addListener(handleWindowFocusChanged);
+  
   // Listen for storage changes (rules updates, monitoring toggle)
   chrome.storage.onChanged.addListener(handleStorageChange);
 })();
@@ -60,7 +64,7 @@ async function handleTabUpdate(tabId, changeInfo, tab) {
   if (!monitoringEnabled) return;
   if (changeInfo.status !== 'complete' || !tab.url) return;
   
-  await classifyAndEmit(tab.url, tabId);
+  await classifyAndEmit(tab.url, tabId, tab.title || null);
 }
 
 /**
@@ -72,7 +76,7 @@ async function handleTabActivated(activeInfo) {
   try {
     const tab = await chrome.tabs.get(activeInfo.tabId);
     if (tab.url) {
-      await classifyAndEmit(tab.url, activeInfo.tabId);
+      await classifyAndEmit(tab.url, activeInfo.tabId, tab.title || null);
     }
   } catch (error) {
     console.error('Failed to get active tab:', error);
@@ -80,9 +84,29 @@ async function handleTabActivated(activeInfo) {
 }
 
 /**
+ * When the user switches back to a Chrome window (e.g. from Xcode to Chrome),
+ * send the current tab's event so the website is recorded without a refresh.
+ * Fires when windowId is not WINDOW_ID_NONE (-1).
+ */
+async function handleWindowFocusChanged(windowId) {
+  if (!monitoringEnabled) return;
+  if (windowId === chrome.windows.WINDOW_ID_NONE || windowId == null) return;
+  
+  try {
+    const tabs = await chrome.tabs.query({ active: true, windowId: windowId });
+    const tab = tabs[0];
+    if (tab && tab.url && (tab.url.startsWith('http://') || tab.url.startsWith('https://'))) {
+      await classifyAndEmit(tab.url, tab.id, tab.title || null);
+    }
+  } catch (error) {
+    console.error('Failed to emit on window focus:', error);
+  }
+}
+
+/**
  * Classify URL and emit event
  */
-async function classifyAndEmit(url, tabId) {
+async function classifyAndEmit(url, tabId, title) {
   if (!rulesEngine) {
     await loadRules();
   }
@@ -97,7 +121,8 @@ async function classifyAndEmit(url, tabId) {
     path: parsed ? parsed.path : null,
     classification: result.classification,
     ruleId: result.ruleId,
-    tabId: tabId
+    tabId: tabId,
+    title: title || undefined
   };
   
   // Add to history (keep last 100)

@@ -5,7 +5,8 @@
   "description": "Classifies browsing as productive, neutral, or distracting using static URL rules",
   "permissions": [
     "tabs",
-    "storage"
+    "storage",
+    "windows"
   ],
   "host_permissions": [
     "http://127.0.0.1:17321/*"
