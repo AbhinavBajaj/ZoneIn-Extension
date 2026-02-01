@@ -177,6 +177,17 @@ async function handleStorageChange(changes, areaName) {
  * Handle messages from popup/options
  */
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  // Content script: tab became visible (user switched back from another app or from another tab)
+  if (message.type === 'TAB_BECAME_VISIBLE' && sender.tab) {
+    const tab = sender.tab;
+    if (monitoringEnabled && tab.url && (tab.url.startsWith('http://') || tab.url.startsWith('https://'))) {
+      classifyAndEmit(tab.url, tab.id, tab.title || null).catch(err => {
+        console.error('Emit on tab visible failed:', err);
+      });
+    }
+    return false;
+  }
+
   if (message.type === 'GET_CURRENT_TAB') {
     chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
       if (tabs[0] && tabs[0].url) {
