@@ -71,6 +71,18 @@ zonein-extension/
 1. Right-click the extension icon
 2. Select "Pin" to keep it visible in the toolbar
 
+## Updating the Extension (Unpacked)
+
+When you change code or bump the version in `manifest.json`:
+
+1. Open **Chrome** → `chrome://extensions/`
+2. Find **ZoneIn Extension** in the list
+3. Click the **reload** (circular arrow) icon on the extension card  
+   - This reloads the extension from disk and picks up the new version
+4. Confirm the version under the extension name (e.g. **1.0.1**)
+
+You do **not** need to remove and "Load unpacked" again unless you moved the folder. Bumping the version in `manifest.json` (e.g. to `1.0.1`) before reloading helps you confirm the right build is active.
+
 ## Native Messaging Host Setup
 
 The native messaging host allows the extension to communicate directly with the ZoneIn macOS app.
