@@ -4,18 +4,37 @@
  */
 (function () {
   let wasHidden = false;
+  let contextInvalidated = false;
+
+  function safeSendTabVisible() {
+    if (contextInvalidated) return;
+    try {
+      chrome.runtime.sendMessage({ type: 'TAB_BECAME_VISIBLE' }, function () {
+        try {
+          if (chrome.runtime && chrome.runtime.lastError) contextInvalidated = true;
+        } catch (_) {
+          contextInvalidated = true;
+        }
+      });
+    } catch (e) {
+      contextInvalidated = true;
+    }
+  }
 
   document.addEventListener('visibilitychange', function () {
-    if (document.visibilityState === 'visible') {
-      // Only notify when we were previously hidden (app switch or tab switch back to this tab)
-      if (wasHidden) {
-        chrome.runtime.sendMessage({ type: 'TAB_BECAME_VISIBLE' }).catch(function () {
-          // Extension context invalid or not available, ignore
-        });
+    try {
+      if (document.visibilityState === 'visible') {
+        if (wasHidden) {
+          wasHidden = false;
+          setTimeout(safeSendTabVisible, 0);
+        } else {
+          wasHidden = false;
+        }
+      } else {
+        wasHidden = true;
       }
+    } catch (e) {
       wasHidden = false;
-    } else {
-      wasHidden = true;
     }
   });
 })();

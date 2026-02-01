@@ -1,6 +1,18 @@
 {
   "rules": [
     {
+      "id": "zonein-localhost",
+      "type": "domain",
+      "domain": "localhost",
+      "classification": "productive"
+    },
+    {
+      "id": "zonein-io",
+      "type": "domain",
+      "domain": "zonein.io",
+      "classification": "productive"
+    },
+    {
       "id": "youtube-shorts",
       "type": "path-contains",
       "domain": "youtube.com",
